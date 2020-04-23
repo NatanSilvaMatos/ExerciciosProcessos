@@ -22,7 +22,10 @@ public class RedesController {
 		if(os.equals("Windows 10") || os.equals("Linux")) {
 			try {
 				InetAddress ip = Inet4Address.getLocalHost(); //pega o ip do local host
-				System.out.println("IP = " + ip.toString().substring(16));
+				String mostraIp = ip.toString();
+				int numero = mostraIp.indexOf("/"); //pegando o numero do indice da barra
+				mostraIp = mostraIp.substring(numero + 1); //usando o indice da barra para cortar e mostrar apenas o numero do IP
+				System.out.println("IP = " + mostraIp);
 				try {
 					NetworkInterface adaptador = NetworkInterface.getByInetAddress(ip); 
 					StringBuffer adapter =  new StringBuffer(adaptador.getName());
