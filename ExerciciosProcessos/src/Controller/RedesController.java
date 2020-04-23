@@ -19,7 +19,7 @@ public class RedesController {
 	}
 
 	public void retornaIp(String os) {
-		if(os.equals("Windows 10") || os.equals("Linux")) {
+		if(os.equals("Windows 10")) {
 			try {
 				InetAddress ip = Inet4Address.getLocalHost(); //pega o ip do local host
 				String mostraIp = ip.toString();
