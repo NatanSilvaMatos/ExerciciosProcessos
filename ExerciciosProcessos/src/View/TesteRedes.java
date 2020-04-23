@@ -10,6 +10,8 @@ public class TesteRedes {
 
 		operacoes.retornaIp(nome);
 		
+		System.out.println();
+		
 		operacoes.ping(nome);
 	}
 }	

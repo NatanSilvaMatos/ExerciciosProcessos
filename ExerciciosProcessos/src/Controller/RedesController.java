@@ -40,7 +40,7 @@ public class RedesController {
 	}
 	
 	public void ping(String os) {
-		if(os.equals("Windows 10")) {
+		if(os.equals("Windows 10") || os.equals("Linux")) {
 			String command = "PING -t10 www.google.com.br";
 			Process p;
 			try {
