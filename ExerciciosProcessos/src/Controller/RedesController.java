@@ -12,7 +12,7 @@ import java.net.UnknownHostException;
 
 
 public class RedesController {
-	
+
 	public String nomeOs() {
 		String nome = System.getProperty("os.name");
 		return nome;
@@ -38,32 +38,42 @@ public class RedesController {
 			}
 		}
 	}
-	
+
 	public void ping(String os) {
-		if(os.equals("Windows 10") || os.equals("Linux")) {
-			String command = "PING -t10 www.google.com.br";
-			Process p;
+		String command = "";
+		if(os.equals("Windows 10")) {
+			command = "PING -t10 www.google.com.br";
+		}
+		else if(os.equals("Linux")){
+			command = "ping -t10 www.google.com.br";
+		}
+		try {
+			Process p = Runtime.getRuntime().exec(command);
+			InputStream is = p.getInputStream(); 
+			InputStreamReader isp = new InputStreamReader(is);
+			BufferedReader bf = new BufferedReader(isp);
+			String s = bf.readLine();
 			try {
-				p = Runtime.getRuntime().exec(command);
-				InputStream is = p.getInputStream(); 
-				InputStreamReader isp = new InputStreamReader(is);
-				BufferedReader bf = new BufferedReader(isp);
-				String s = bf.readLine();
-				try {
-					s = bf.readLine();
-					System.out.println(s);
-					for(int i = 0;i <= 9;i++) {
-						s = bf.readLine();
-						System.out.println(s.substring(37)); //cortando a String para aparecer somente o tempo em millisegundos
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
+				s = bf.readLine();
+				System.out.println(s);
+				String auxiliar = bf.readLine().trim();
+				int numero = auxiliar.lastIndexOf(":");
+				for(int i = 0;i <= 9;i++) {
+					s = bf.readLine(); 			//.substring(37)
+					System.out.println(s.trim().substring(numero + 2)); //cortando a String para aparecer somente o tempo em millisegundos
 				}
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 	}
-	
+	{
+	}
 }
+
+
+
+
+
