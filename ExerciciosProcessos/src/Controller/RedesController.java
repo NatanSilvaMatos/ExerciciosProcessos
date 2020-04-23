@@ -59,7 +59,7 @@ public class RedesController {
 				String auxiliar = bf.readLine().trim();
 				int numero = auxiliar.lastIndexOf(":");
 				for(int i = 0;i <= 9;i++) {
-					s = bf.readLine(); 			//.substring(37)
+					s = bf.readLine(); 			
 					System.out.println(s.trim().substring(numero + 2)); //cortando a String para aparecer somente o tempo em millisegundos
 				}
 			} catch (IOException e) {
