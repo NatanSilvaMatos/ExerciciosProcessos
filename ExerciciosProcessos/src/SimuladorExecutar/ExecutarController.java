@@ -24,12 +24,17 @@ public class ExecutarController implements ActionListener{
 	}
 	
 	
+	
 	public void validaArquivo() {
 		try {
+			TelaExecutar tela = new TelaExecutar();
 			Runtime.getRuntime().exec(textoArquivo.getText().trim());
+			boolean mostrando = tela.isDisplayable();
+			if(mostrando) {
+				tela.dispose();
+			}
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
 		}
-		
 	}
 }
